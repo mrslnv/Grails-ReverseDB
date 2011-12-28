@@ -1,0 +1,68 @@
+dataSource {
+    pooled = true
+/*    
+    driverClassName = "org.h2.Driver"
+    username = "sa"
+    password = ""
+    */
+    driverClassName = "oracle.jdbc.OracleDriver"
+    username = "system"
+    password = "MyDb1"
+    dialect = "org.hibernate.dialect.Oracle10gDialect"
+}
+hibernate {
+    cache.use_second_level_cache = true
+    cache.use_query_cache = true
+    cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
+    default_schema = "DEFAULT_ALI_DEV_DB" 
+}
+// environment specific settings
+environments {
+    development {
+/*
+        dataSource {
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
+        }
+        */
+        dataSource {
+//            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "update"
+            url = "jdbc:oracle:thin:@czvm166:1521:orcl"
+        }
+    }
+    test {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:oracle:thin:@czvm166:1521:orcl"
+            pooled = true
+            properties {
+               maxActive = -1
+               minEvictableIdleTimeMillis=1800000
+               timeBetweenEvictionRunsMillis=1800000
+               numTestsPerEvictionRun=3
+               testOnBorrow=true
+               testWhileIdle=true
+               testOnReturn=true
+               validationQuery="SELECT 1 from DUAL"
+            }
+        }
+    }
+    production {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:h2:prodDb;MVCC=TRUE"
+            pooled = true
+            properties {
+               maxActive = -1
+               minEvictableIdleTimeMillis=1800000
+               timeBetweenEvictionRunsMillis=1800000
+               numTestsPerEvictionRun=3
+               testOnBorrow=true
+               testWhileIdle=true
+               testOnReturn=true
+               validationQuery="SELECT 1"
+            }
+        }
+    }
+}
