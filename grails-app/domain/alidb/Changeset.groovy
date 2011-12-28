@@ -16,13 +16,14 @@ class Changeset {
 
 	static hasMany = [changesetFiles: ChangesetFile,
 	                  changesetLinkses: ChangesetLinks,
-	                  changesetModificationsForCsmCsModId: ChangesetModification,
-	                  changesetModificationsForCsmCsOrigId: ChangesetModification]
+//	                  changesetModificationsForCsmCsModId: ChangesetModification,
+//	                  changesetModificationsForCsmCsOrigId: ChangesetModification
+	                  modifiedBy: ChangesetModification,
+	                  modifies: ChangesetModification
+                    ]
 
-	// TODO you have multiple hasMany references for class(es) [ChangesetModification] 
-	//      so you'll need to disambiguate them with the 'mappedBy' property:
-	static mappedBy = [changesetModificationsForCsmCsModId: "TODO",
-	                   changesetModificationsForCsmCsOrigId: "TODO"]
+	static mappedBy = [modifiedBy: "changesetByCsmCsModId",
+	                   modifies: "changesetByCsmCsOrigId"]
 
 	static mapping = {
 		id column: "CHS_ID", generator: "assigned"

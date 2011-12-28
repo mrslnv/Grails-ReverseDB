@@ -24,6 +24,6 @@ class TestCriteria {
 		tcrCreatedBy nullable: true, maxSize: 60
 		tcrCreationDate nullable: true, maxSize: 7
 		tcrVcCheckoutUserName nullable: true, maxSize: 60
-		tcrIsMainCriterion unique: ["SYS_NC00010$", "TCR_TEST_ID"]
+//		tcrIsMainCriterion unique: ["SYS_NC00010$", "TCR_TEST_ID"]
 	}
 }

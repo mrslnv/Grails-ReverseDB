@@ -162,7 +162,7 @@ class Req {
 		rqAttachment nullable: true, maxSize: 1
 		rqReqDate nullable: true, maxSize: 7
 		rqReqTime nullable: true, maxSize: 10
-		rqNoOfSons nullable: true, unique: ["SYS_NC00097$", "RQ_REQ_PATH"]
+//		rqNoOfSons nullable: true, unique: ["SYS_NC00097$", "RQ_REQ_PATH"]
 		rqIsFolder nullable: true, maxSize: 1
 		rqVts nullable: true, maxSize: 20
 		rqUser13 nullable: true, maxSize: 40
